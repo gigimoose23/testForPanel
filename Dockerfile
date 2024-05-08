@@ -1,10 +1,19 @@
+# Base image
 FROM node:lts-alpine
-ENV NODE_ENV=production
+
+# Create app directory
 WORKDIR /usr/src/app
-COPY ["package.json", "package-lock.json*", "npm-shrinkwrap.json*", "./"]
-RUN npm install --production --silent && mv node_modules ../
+
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+COPY package*.json ./
+
+# Install app dependencies
+RUN npm install
+
+# Bundle app source
 COPY . .
+
+# Start the server using the production build
+CMD [ "node", "index.js" ]
+
 EXPOSE 1024
-RUN chown -R node /usr/src/app
-USER node
-CMD ["node", "index.js"]
