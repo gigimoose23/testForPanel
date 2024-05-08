@@ -7,5 +7,5 @@ app.get("/", (req, res) => {
 })
 
 app.listen(1024, () => {
-    console.log("running!");
+    console.log("running v2!");
 })
