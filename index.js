@@ -6,6 +6,6 @@ app.get("/", (req, res) => {
     res.send("hello");
 })
 
-app.listen(80, () => {
+app.listen(1024, () => {
     console.log("running!");
 })
